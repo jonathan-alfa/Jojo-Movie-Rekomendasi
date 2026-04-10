@@ -1,0 +1,3 @@
+# Mengabaikan file model dan dataset
+*.pkl
+*.csv
