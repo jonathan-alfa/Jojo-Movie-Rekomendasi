@@ -8,16 +8,22 @@ document.addEventListener('DOMContentLoaded', function() {
         aiForm.addEventListener('submit', function() {
             loadingScreen.style.display = 'flex';
             const btn = this.querySelector('button[type="submit"]');
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Memproses...';
+            
+            // animasi tombol menjadi disabled
+            btn.innerHTML = '<span style="transform: translateZ(15px)"><i class="fas fa-cube fa-spin me-2"></i>Mencari di Dimensi...</span>';
             btn.classList.add('disabled');
+            btn.style.pointerEvents = 'none';
         });
     }
 
     // Auto-scroll jika ada hasil
     if (resultTitle) {
-        resultTitle.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+        // Beri sedikit delay untuk membiarkan animasi 3D render pertama
+        setTimeout(() => {
+            resultTitle.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }, 300);
     }
 });
